@@ -1,0 +1,55 @@
+{
+    "name": "vendor-slug/package-slug",
+    "description": "Laravel package skeleton",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.4",
+        "illuminate/contracts": "^11.0||^12.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "orchestra/testbench": "^9.0||^10.0",
+        "pestphp/pest": "^4.0",
+        "pestphp/pest-plugin-laravel": "^4.0",
+        "rector/rector": "^2.3",
+        "phpstan/phpstan": "^2.1",
+        "driftingly/rector-laravel": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "VendorName\\PackageName\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "VendorName\\PackageName\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "VendorName\\PackageName\\PackageNameServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "configure": "php configure.php",
+        "test": "pest --compact",
+        "format": [
+            "pint --parallel",
+            "npm run format"
+        ],
+        "analyse": "phpstan",
+        "refactor": "rector",
+        "coverage": "pest --coverage",
+        "coverage:herd": "herd coverage ./vendor/bin/pest --coverage"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

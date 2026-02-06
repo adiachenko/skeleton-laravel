@@ -1,0 +1,29 @@
+# MacOS
+.DS_Store
+
+# Composer
+composer.lock
+vendor/
+
+# NPM
+package-lock.json
+/node_modules
+
+# Caches
+.phpunit.cache/
+.php-cs-fixer.cache
+
+# Editors
+.idea/
+.vscode/
+
+# Local configuration
+phpunit.xml
+phpstan.neon
+.env
+
+# Agents
+.claude/
+.codex/
+AGENTS.local.md
+CLAUDE.local.md

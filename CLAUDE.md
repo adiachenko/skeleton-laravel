@@ -1,0 +1,3 @@
+# Claude Guide
+
+@AGENTS.md

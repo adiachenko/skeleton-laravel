@@ -1,0 +1,4 @@
+# Ignore artifacts:
+*.php
+node_modules
+vendor
