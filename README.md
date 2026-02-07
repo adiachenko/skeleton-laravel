@@ -1,6 +1,6 @@
 # Laravel Package Skeleton
 
-A production-ready starting point for building Laravel packages with modern defaults:
+A starting point for building Laravel packages with modern defaults:
 
 - PHP `8.4` and `8.5`
 - Laravel `11` and `12`
@@ -31,9 +31,9 @@ git add -A
 git commit -m "Initial commit"
 ```
 
-## What `composer configure` Updates
+## Configure Script: What Gets Updated
 
-The script (`configure.php`) is interactive-only. Each prompt shows a default value in square brackets, and pressing Enter accepts that default.
+The script (`composer configure`) is interactive-only. Each prompt shows a default value in square brackets, and pressing Enter accepts that default.
 It asks for:
 
 - Vendor
