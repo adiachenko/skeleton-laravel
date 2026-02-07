@@ -1,112 +1,111 @@
 # Laravel Package Skeleton
 
-A starting point for building a Laravel package.
+A production-ready starting point for building Laravel packages with modern defaults:
 
-## Configure the skeleton
+- PHP `8.4` and `8.5`
+- Laravel `11` and `12`
+- Pest + Orchestra Testbench for package testing
+- Pint, PHPStan, and Rector for quality checks
+
+> Version policy: this skeleton tracks the two latest stable PHP and Laravel versions.
+
+## Quick Start
+
+Use this repository as a template for your package, then run the interactive configurator.
 
 ```bash
-# Run the interactive configuration script to rebrand the skeleton into your own package
-composer configure
+# Replace <package-slug> with your package folder name
+git clone https://github.com/adiachenko/skeleton-laravel.git <package-slug>
+cd <package-slug>
 
-# After configuring, rename this README and remove the "Configure the skeleton" section.
-# Reinitialize the repository to start with a clean Git history:
+# Rebrand the skeleton
+composer configure
+```
+
+After configuration is complete, start your own clean history:
+
+```bash
 rm -rf .git
 git init
 git add -A
 git commit -m "Initial commit"
 ```
 
-The `configure` script prompts for:
+## What `composer configure` Updates
 
-- **Vendor** (required) - defaults to your GitHub username via `gh` CLI if available
-- **Package** (required) - defaults to the current folder name
-- **Namespace** - defaults to `StudlyVendor\StudlyPackage`
-- **Description** - defaults to the current `composer.json` description
-- **Author Name** - defaults to `git config user.name`
-- **Author Email** - defaults to `git config user.email`
-- **Copyright Holder** - defaults to `git config user.name`
-- **License** - selector for MIT or proprietary
+The script (`configure.php`) is interactive-only. Each prompt shows a default value in square brackets, and pressing Enter accepts that default.
+It asks for:
 
-The script updates `composer.json` (including the `authors` field if provided), renames files, and scaffolds `LICENSE.md` based on the selected license.
+- Vendor
+- Package
+- Namespace
+- Description
+- Author name
+- Author email
+- Copyright holder
+- License (MIT or proprietary)
 
-## Install
+It then updates the package identity across the skeleton, including:
 
-```bash
-composer require vendor-slug/package-slug
-```
+- `composer.json` (name, namespace, provider, description, authors)
+- Service provider class/file naming
+- Config file naming and key wiring
+- `LICENSE.md`
+- `AGENTS.md` initialization for the generated package
 
-## Development
+`README.md` should be edited manually after reinitializing your repository. Remove template-specific content before [Development Commands](#development-commands) section and replace it with your package's own introduction, installation, and usage sections.
 
-### Composer scripts
+## Development Commands
 
-> Note that `composer format` and `composer analyse` are automatically run by Git hooks (see below).
+| Command                  | Purpose                                            |
+| ------------------------ | -------------------------------------------------- |
+| `composer test`          | Run the test suite (`pest --compact`).             |
+| `composer format`        | Run Laravel Pint and Prettier formatting.          |
+| `composer analyse`       | Run static analysis (`phpstan`).                   |
+| `composer refactor`      | Apply Rector refactors.                            |
+| `composer coverage`      | Run tests with local coverage (`pest --coverage`). |
+| `composer coverage:herd` | Run coverage via Laravel Herd tooling.             |
 
-| Script                   | Runs                                         | Use when                                                             |
-| ------------------------ | -------------------------------------------- | -------------------------------------------------------------------- |
-| `composer test`          | `pest --compact`                             | Run the test suite.                                                  |
-| `composer format`        | `pint --parallel` + `npm run format`         | Format PHP and non-PHP files (requires Node dependencies installed). |
-| `composer analyse`       | `phpstan`                                    | Run static analysis checks.                                          |
-| `composer refactor`      | `rector`                                     | Apply automated refactors.                                           |
-| `composer coverage`      | `pest --coverage`                            | Generate a local coverage report (requires Xdebug/PCOV).             |
-| `composer coverage:herd` | `herd coverage ./vendor/bin/pest --coverage` | Generate coverage using Laravel Herd tooling.                        |
+## Git Hooks
 
-### Git hooks
-
-Install local Git hooks:
+Install project hooks:
 
 ```bash
 sh install-git-hooks.sh
 ```
 
-The installer creates these hooks in `.git/hooks`:
+Installed hooks:
 
-- `pre-commit` -> runs `composer format` (Pint + Prettier)
-- `pre-push` -> runs `composer analyse` (PHPStan)
+- `pre-commit` runs `composer format`
+- `pre-push` runs `composer analyse`
 
-If you use Fork git client and encounter issues with the hooks, see [this issue](https://github.com/fork-dev/Tracker/issues/996).
+If you use Fork and hooks misbehave, see [this issue](https://github.com/fork-dev/Tracker/issues/996).
 
-### PhpStorm formatting
+## PhpStorm Setup (Optional)
 
-For the best formatting experience, configure Laravel Pint and Prettier:
+Recommended setup for consistent formatting:
 
-**Settings | PHP | Quality Tools | Laravel Pint:**
+- `Settings | PHP | Quality Tools | Laravel Pint`: use ruleset from `pint.json`
+- `Settings | PHP | Quality Tools`: set Laravel Pint as external formatter
+- `Settings | Tools | Actions on Save`: enable reformat on save
+- `Settings | Languages & Frameworks | JavaScript | Prettier`: use automatic config, run on save, and prefer Prettier config. If needed, also include `md` in Prettier file extensions.
 
-Choose _Ruleset: defined in pint.json_.
+## Testing Lower Dependency Versions
 
-**Settings | PHP | Quality Tools:**
-
-Choose Laravel Pint as _External Formatter_.
-
-**Settings | Tools | Actions on Save:**
-
-Enable _Reformat code_ option for all file types.
-
-**Settings | Languages & Frameworks | JavaScript | Prettier:**
-
-Choose _Automatic Prettier Configuration_.
-
-Enable _Run on save_ and _Prefer Prettier configuration over IDE code style_.
-
-You may have to add `md` to the default list of file extensions if it's missing, e.g.
+To validate compatibility with Laravel 11 without editing `composer.json`:
 
 ```bash
-**/*.{js,ts,jsx,tsx,cjs,cts,mjs,mts,json,vue,astro,md}
-```
-
-### Testing lower dependency versions
-
-You can test the package against Laravel 11 without modifying `composer.json` by running:
-
-```shell script
 composer update illuminate/contracts:^11.0 orchestra/testbench:^9.0 pestphp/pest:^4.0 pestphp/pest-plugin-laravel:^4.0 -W
 ```
 
-## Config
+## Config Publishing Example
 
-Publish the config file:
+The default skeleton publishes its config under:
 
 ```bash
 php artisan vendor:publish --tag=skeleton-laravel-config
 ```
 
-The config file is located at `config/skeleton-laravel.php`.
+Resulting file:
+
+- `config/skeleton-laravel.php`

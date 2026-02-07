@@ -109,7 +109,7 @@ function promptLicense(string $currentLicense): string
     $defaultChoice = strtolower(trim($currentLicense)) === 'proprietary' ? '2' : '1';
 
     while (true) {
-        $choice = trim(readline("License [1=MIT, 2=proprietary] ($defaultChoice): "));
+        $choice = trim(readline("License (1=MIT, 2=proprietary) [$defaultChoice]: "));
 
         if ($choice === '') {
             $choice = $defaultChoice;
@@ -316,6 +316,13 @@ TEXT;
 
 const AGENTS_TEMPLATE = <<<'TEXT'
 # AI Guide
+
+## Verification Policy
+
+- After each completed code-affecting task, run related tests, `composer format`, and `composer analyse`.
+- Report concrete command outputs (command plus key output lines).
+- Run full `composer test` only when explicitly requested, or when you cannot identify a bounded set of related tests with high confidence.
+- If you run the full suite due to uncertainty, state why related tests were insufficient.
 
 ---
 
