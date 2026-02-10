@@ -91,6 +91,10 @@ Recommended setup for consistent formatting:
 - `Settings | Tools | Actions on Save`: enable reformat on save
 - `Settings | Languages & Frameworks | JavaScript | Prettier`: use automatic config, enable "Run on save", and prefer Prettier config. Include `md` in Prettier file extensions.
 
+## VSCode/Cursor Setup
+
+All formatting settings for VSCode and Cursor are included under `.vscode/` folder and should be picked up automatiically by the editor as long as you install suggested extensions.
+
 ## Testing Lower Dependency Versions
 
 To validate compatibility with Laravel 11 without editing `composer.json`:
