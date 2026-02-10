@@ -93,7 +93,7 @@ Recommended setup for consistent formatting:
 
 ## VSCode/Cursor Setup
 
-All formatting settings for VSCode and Cursor are included under `.vscode/` folder and should be picked up automatiically by the editor as long as you install suggested extensions.
+VSCode and Cursor will automatically detect formatting settings defined in the `.vscode/` folder – no additional setup is needed beyond installing the suggested extensions.
 
 ## Testing Lower Dependency Versions
 
