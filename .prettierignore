@@ -1,4 +1,2 @@
-# Ignore artifacts:
-*.php
-node_modules
-vendor
+node_modules/
+vendor/

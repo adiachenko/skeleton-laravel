@@ -85,10 +85,11 @@ If you use Fork and hooks misbehave, see [this issue](https://github.com/fork-de
 
 Recommended setup for consistent formatting:
 
+- `Settings | Editor | Code Style`: ensure "Enable EditorConfig support" is checked.
 - `Settings | PHP | Quality Tools | Laravel Pint`: use ruleset from `pint.json`
 - `Settings | PHP | Quality Tools`: set Laravel Pint as external formatter
 - `Settings | Tools | Actions on Save`: enable reformat on save
-- `Settings | Languages & Frameworks | JavaScript | Prettier`: use automatic config, run on save, and prefer Prettier config. If needed, also include `md` in Prettier file extensions.
+- `Settings | Languages & Frameworks | JavaScript | Prettier`: use automatic config, enable "Run on save", and prefer Prettier config. Include `md` in Prettier file extensions.
 
 ## Testing Lower Dependency Versions
 
